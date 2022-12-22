@@ -24,10 +24,10 @@ const userSchema = new Schema({
     zipcode: {
         type: String,
     },
-    adress: {
+    address: {
         type: String,
     },
-    adress_number: {
+    address_number: {
         type: String,
     },
     complement: {
