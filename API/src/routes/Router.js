@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const userRoutes = require('./usersRoutes');
+const bankRoutes = require('./bankAccountRoutes');
 
 router.use('/user', userRoutes);
+router.use('/bank', bankRoutes);
 
 router.get('/', (req, res) => {
     res.status(200).json({

@@ -1,4 +1,5 @@
 const { UserAccount: UserAccountModel } = require('../models/UserAccount');
+const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const generateToken = require('../helpers/generate-token');
 
@@ -83,12 +84,8 @@ module.exports = class UserAccountController {
     }
     static async updateUser(req, res) {
 
-        // console.log(req.file);
-
-        const { user } = req;
         const { 
-            name, 
-            email, 
+            name,
             phone,
             passwordActual, 
             newPassword,
@@ -102,18 +99,23 @@ module.exports = class UserAccountController {
         } = req.body;
 
         let img = null;
+        const reqUser = req.user;
+        const user = await UserAccountModel.findById(mongoose.Types.ObjectId(reqUser._id)).select('-password');
         
         !user && res.status(404).json({ errors: ['Você não tem autorização para executar essa ação.']});
         
         if(req.file) {
             img = req.file.filename;
         }
-        
-        let newUser = {
-            name,
-            email,
-            phone,
-        };
+        if(name) {
+            user.name = name;
+        }
+        if(phone) {
+            user.phone = phone;
+        }
+        if(img) {
+            user.image = img;
+        }
         
         if(passwordActual) {
             
@@ -124,11 +126,8 @@ module.exports = class UserAccountController {
             const salt = await bcrypt.genSalt(12);
             const passwordHash = await bcrypt.hash(newPassword, salt);
 
-            newUser.password = passwordHash;
+            user.password = passwordHash;
 
-        }
-        if(img) {
-            newUser.image = img;
         }
 
         if(zipcode) {
@@ -137,20 +136,27 @@ module.exports = class UserAccountController {
                 return res.status(422).json({ errors: ['Por favor, preencha todos os campos de endereço.']});
             }
 
-            newUser.zipcode = zipcode;
-            newUser.address = address;
-            newUser.address_number = address_number;
-            newUser.district = district;
-            newUser.city = city;
-            newUser.state = state;
+            user.zipcode = zipcode;
+            user.address = address;
+            user.address_number = address_number;
+            user.district = district;
+            user.city = city;
+            user.state = state;
 
             if(complement) { 
-                newUser.complement = complement; 
+                user.complement = complement; 
             }
         }
 
-        res.status(200).json(newUser);
+        try {
+            
+            await user.save();
+            res.status(200).json(user);
 
-
+        } catch (error) {
+            
+            res.status(422).json({ errors: ['Houve algum problema na requisição, por favor tente novamente mais tarde.']});
+            
+        }
     }
 }
