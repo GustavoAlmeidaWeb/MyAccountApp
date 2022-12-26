@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', routes);
 
 // Upload Dir
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
 app.use(helmet());
 

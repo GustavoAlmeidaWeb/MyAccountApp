@@ -84,19 +84,7 @@ module.exports = class UserAccountController {
     }
     static async updateUser(req, res) {
 
-        const { 
-            name,
-            phone,
-            passwordActual, 
-            newPassword,
-            zipcode,
-            address,
-            address_number,
-            complement,
-            district,
-            city,
-            state,
-        } = req.body;
+        const { name, phone, passwordActual, newPassword } = req.body;
 
         let img = null;
         const reqUser = req.user;
@@ -104,18 +92,10 @@ module.exports = class UserAccountController {
         
         !user && res.status(404).json({ errors: ['Você não tem autorização para executar essa ação.']});
         
-        if(req.file) {
-            img = req.file.filename;
-        }
-        if(name) {
-            user.name = name;
-        }
-        if(phone) {
-            user.phone = phone;
-        }
-        if(img) {
-            user.image = img;
-        }
+        if(req.file) { img = req.file.filename; }
+        if(name) { user.name = name; }
+        if(phone) { user.phone = phone; }
+        if(img) { user.image = img; }
         
         if(passwordActual) {
             
@@ -128,24 +108,6 @@ module.exports = class UserAccountController {
 
             user.password = passwordHash;
 
-        }
-
-        if(zipcode) {
-
-            if(!address || !address_number || !district || !city || !state) {
-                return res.status(422).json({ errors: ['Por favor, preencha todos os campos de endereço.']});
-            }
-
-            user.zipcode = zipcode;
-            user.address = address;
-            user.address_number = address_number;
-            user.district = district;
-            user.city = city;
-            user.state = state;
-
-            if(complement) { 
-                user.complement = complement; 
-            }
         }
 
         try {

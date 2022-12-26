@@ -92,28 +92,6 @@ const userUpdateValidation = () => {
                 }            
                 return true;
             }),
-        body('zipcode')
-            .optional()
-            .isLength({ min: 8 })
-            .withMessage('Por favor, digite um CEP válido.')
-            .custom((value, {req}) => {
-                if (!req.body.address) {
-                    throw new Error('Por favor, digite o endereço.');
-                }
-                if (!req.body.address_number) {
-                    throw new Error('Por favor, digite a número da residência.');
-                }
-                if (!req.body.district) {
-                    throw new Error('Por favor, digite o bairro.');
-                }
-                if (!req.body.city) {
-                    throw new Error('Por favor, digite a cidade.');
-                }
-                if (!req.body.state) {
-                    throw new Error('Por favor, digite o estado.');
-                }
-                return true;
-            }),
         ]       
 }
 
