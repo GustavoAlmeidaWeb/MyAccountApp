@@ -96,5 +96,19 @@ module.exports = class UserAddressController {
         }
 
     }
+    static async getAllAdresses(req, res) {
+
+        try {
+            
+            const address = await UserAddressModel.find();
+            res.status(200).json(address);
+
+        } catch (error) {
+
+            res.status(422).json({ errors: ['Houve algum problema na requisição, por favor tente novamente mais tarde.']});
+            
+        }
+
+    }
 
 }

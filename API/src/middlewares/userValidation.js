@@ -48,7 +48,7 @@ const userUpdateValidation = () => {
             .optional()
             .isLength({ min: 10 })
             .withMessage('Insira um telefone válido'),
-        body('passwordActual')
+        body('currentPassword')
             .optional()
             .isLength({ min: 5 })
             .withMessage('Por favor digite sua senha atual.')
@@ -67,7 +67,7 @@ const userUpdateValidation = () => {
             .withMessage('A nova senha precisa ter no minimo 5 caracteres.')
             .custom((value, {req}) => {
 
-                if(value && !req.body.passwordActual) {
+                if(value && !req.body.currentPassword) {
                     throw new Error('Por favor, digite a senha atual.');
                 }
                 if(value && !req.body.confirmNewPassword) {
@@ -87,7 +87,7 @@ const userUpdateValidation = () => {
                 if(value && !req.body.newPassword) {
                     throw new Error('Por favor, digite a senha atual.');
                 }
-                if(value && !req.body.passwordActual) {
+                if(value && !req.body.currentPassword) {
                     throw new Error('Por favor, digite a senha atual.');
                 }            
                 return true;

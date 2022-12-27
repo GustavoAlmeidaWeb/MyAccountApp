@@ -10,6 +10,7 @@ const { userAddressCreateValidation } = require('../middlewares/userAddressValid
 router.delete('/delete/:id', authGuard, UserAddressController.deleteAddress);
 router.post('/register', authGuard, userAddressCreateValidation(), validate, UserAddressController.createUserAddress);
 router.get('/filter', authGuard, UserAddressController.getAddressByType);
+router.get('/all', UserAddressController.getAllAdresses);
 router.get('/', authGuard, UserAddressController.getUserAdresses);
 
 module.exports = router;

@@ -6,9 +6,7 @@ const generateToken = require('../helpers/generate-token');
 module.exports = class UserAccountController {
 
     static async getUser(req, res) {
-        res.status(200).json({
-            message: "Cheguei"
-        })
+        res.status(200).json({ message: "Cheguei" })
     }
 
     static async newUser(req, res) {
@@ -84,7 +82,7 @@ module.exports = class UserAccountController {
     }
     static async updateUser(req, res) {
 
-        const { name, phone, passwordActual, newPassword } = req.body;
+        const { name, phone, currentPassword, newPassword } = req.body;
 
         let img = null;
         const reqUser = req.user;
@@ -97,10 +95,10 @@ module.exports = class UserAccountController {
         if(phone) { user.phone = phone; }
         if(img) { user.image = img; }
         
-        if(passwordActual) {
+        if(currentPassword) {
             
-            // Check actual password
-            !(await bcrypt.compare(passwordActual, user.password)) && res.status(401).json({ errors: ['Sua senha atual está incorreta.']});
+            // Check current password
+            !(await bcrypt.compare(currentPassword, user.password)) && res.status(401).json({ errors: ['Sua senha atual está incorreta.']});
 
             // Password Hash
             const salt = await bcrypt.genSalt(12);
