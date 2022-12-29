@@ -1,4 +1,4 @@
-import { api } from '../utils/config';
+import { api } from '@src/utils/config';
 
 const register = async (data) => {
 

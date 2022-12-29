@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Row, Col, Form, Button, FloatingLabel, Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { login } from '../../slices/authSlice';
-import { useResetAuthMessage } from '../../hooks/useResetMessage';
-import Message from '../../components/Message';
+import { login } from '@src/slices/authSlice';
+import { useResetAuthMessage } from '@src/hooks/useResetMessage';
+import Message from '@src/components/Message';
 
 const Login = () => {
 

@@ -10,8 +10,7 @@ export const useAuth = () => {
     useEffect(() => {
 
         if(user){
-
-          if(localStorage.getItem('user_account')) {
+          if(user.data) {
             setAuth(true);
           } else {
             setAuth(false);
@@ -22,7 +21,7 @@ export const useAuth = () => {
 
         setLoading(false);
 
-    }, [user])
+    }, [user.data])
 
     return { auth, loading };
 }

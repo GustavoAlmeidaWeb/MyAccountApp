@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 // Redux
 import { useDispatch } from 'react-redux';
-import { logout, resetAuthStates } from '../slices/authSlice';
+import { logout, resetAuthStates } from '@src/slices/authSlice';
 
 // Bootstrap + FontAwesome
 import { Navbar, Container, Nav } from 'react-bootstrap';
@@ -35,6 +35,8 @@ const Navigation = ({ auth }) => {
             ) : (
               <>
                 <NavLink className="nav-link" to='/'><FontAwesomeIcon icon="fa-solid fa-gauge" /> Home</NavLink>
+                <NavLink className="nav-link" to='/enderecos'><FontAwesomeIcon icon="fa-solid fa-map-location-dot" /> Endereços</NavLink>
+                <NavLink className="nav-link" to='/contas-bancarias'><FontAwesomeIcon icon="fa-solid fa-piggy-bank" /> Contas Bancárias</NavLink>
                 <NavLink className="nav-link" onClick={handleLogout}><FontAwesomeIcon icon="fa-solid fa-right-from-bracket" /> Sair</NavLink>
               </>
             )}

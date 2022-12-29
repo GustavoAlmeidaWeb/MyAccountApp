@@ -10,6 +10,8 @@ import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import Home from './pages/Home/Home';
 import NotFound from './pages/404/NotFound';
+import ListAddresses from './pages/Adresses/ListAddresses';
+import ListBankAccounts from './pages/Bank/ListBankAccounts';
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
       <Container>
         <Routes>
           <Route path='/' element={auth ? <Home /> : <Navigate to='/login' />} />
+          <Route path='/enderecos' element={auth ? <ListAddresses /> : <Navigate to='/login' />} />
+          <Route path='/contas-bancarias' element={auth ? <ListBankAccounts /> : <Navigate to='/login' />} />
           <Route path='/login' element={!auth ? <Login /> : <Navigate to='/' />} />
           <Route path='/cadastro' element={!auth ? <Register /> : <Navigate to='/' />} />
           <Route path='*' element={<NotFound />} />

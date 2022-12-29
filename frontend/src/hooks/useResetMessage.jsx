@@ -1,6 +1,5 @@
-
 // Redux
-import { resetAuthStates } from "../slices/authSlice";
+import { resetAuthStates } from "@src/slices/authSlice";
 
 export const useResetAuthMessage = (dispatch) => {
     return () => {
