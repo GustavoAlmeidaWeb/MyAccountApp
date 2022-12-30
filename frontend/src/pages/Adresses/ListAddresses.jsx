@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Col, Row, Button, Tabs, Tab, Accordion } from 'react-bootstrap';
+import { Col, Row, Button, Accordion } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';

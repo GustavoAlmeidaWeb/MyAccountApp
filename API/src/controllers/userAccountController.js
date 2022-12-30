@@ -6,7 +6,18 @@ const generateToken = require('../helpers/generate-token');
 module.exports = class UserAccountController {
 
     static async getUser(req, res) {
-        res.status(200).json({ message: "Cheguei" })
+
+        const { user } = req;
+
+        try {
+            
+            const currentUser = await UserAccountModel.findById(user._id).select('-password');
+            res.status(200).json(currentUser);
+
+        } catch (error) {
+            res.status(422).json({ errors: ['Houve algum problema na requisição, por favor tente mais tarde.']});
+        }
+
     }
 
     static async newUser(req, res) {
