@@ -17,6 +17,11 @@ export const register = createAsyncThunk('auth/register', async (user, thunkAPI)
   try {
 
     const res = await authService.register(user);
+
+    if(res.data.token) {
+      localStorage.setItem('user_account', JSON.stringify({token: res.data.token}));
+    }
+
     return res;
 
   } catch (e) {

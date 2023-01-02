@@ -21,7 +21,7 @@ export const useAuth = () => {
 
         setLoading(false);
 
-    }, [user.data])
+    }, [user]);
 
     return { auth, loading };
 }

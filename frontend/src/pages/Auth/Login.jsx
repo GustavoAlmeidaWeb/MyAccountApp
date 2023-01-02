@@ -45,8 +45,8 @@ const Login = () => {
             <Form.Control type="password" placeholder="Senha" onChange={(e) => setPassword(e.target.value)} value={password || ''} />
           </FloatingLabel>
           <Form.Label className="d-grid">
-            {!loading && <Button type="submit" size="lg" variant="info">Entrar</Button>}
-            {loading && <Button type="submit" size="lg" variant="info" disabled><Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" /> Aguarde...</Button>}
+            {!loading && <Button type="submit" size="lg" variant="primary">Entrar</Button>}
+            {loading && <Button type="submit" size="lg" variant="primary" disabled>Aguarde...</Button>}
             {error && <Message msg={error} type='danger'/>}
             {message && <Message msg={message} type='success'/>}
           </Form.Label>

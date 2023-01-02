@@ -41,7 +41,7 @@ module.exports = class UserAccountController {
         try {
 
             const user = await UserAccountModel.create(data);
-            res.status(201).json(user);
+            res.status(201).json({ ...user._doc, token: generateToken(user._id)});
             
         } catch (error) {
 
