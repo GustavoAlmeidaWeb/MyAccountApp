@@ -56,7 +56,7 @@ const NewAddressItem = ({ show, setShow, handleSubmit }) => {
   return (
     <Modal size='lg' show={show} onHide={() => setShow(false)} backdrop='static'>
       <Modal.Header closeButton>
-        <Modal.Title>Preencha as informações do endereço abaixo</Modal.Title>
+        <Modal.Title><FontAwesomeIcon icon="fa-regular fa-map" /> Preencha as informações do endereço abaixo</Modal.Title>
       </Modal.Header>
       <Form onSubmit={handleForm}>
         <Modal.Body>
@@ -106,8 +106,8 @@ const NewAddressItem = ({ show, setShow, handleSubmit }) => {
           </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShow(false)}>Fechar</Button>
-          <Button variant="primary" type='submit' onClick={() => setShow(false)}>Salvar novo Endereço</Button>
+          <Button variant="secondary" onClick={() => setShow(false)}><FontAwesomeIcon icon="fa-solid fa-xmark" /> Fechar</Button>
+          <Button variant="primary" type='submit' onClick={() => setShow(false)}><FontAwesomeIcon icon="fa-regular fa-floppy-disk" /> Salvar novo Endereço</Button>
         </Modal.Footer>
       </Form>
     </Modal>

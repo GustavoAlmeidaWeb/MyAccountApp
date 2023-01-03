@@ -4,7 +4,7 @@ const userAddressCreateValidation = () => {
     return [
         body('addressType')
             .notEmpty()
-            .withMessage('O tipo é obrigatório.'),
+            .withMessage('O tipo do endereço é obrigatório.'),
         body('addressZipcode')
             .notEmpty()
             .withMessage('O CEP é obrigatorio.')
@@ -15,7 +15,7 @@ const userAddressCreateValidation = () => {
             .withMessage('O nome da Rua é obrigatorio.'),
         body('addressNumber')
             .notEmpty()
-            .withMessage('A Número é obrigatorio.'),
+            .withMessage('O número é obrigatorio.'),
         body('addressDistrict')
             .notEmpty()
             .withMessage('O bairro é obrigatorio.'),
