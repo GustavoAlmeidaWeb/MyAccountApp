@@ -66,7 +66,7 @@ module.exports = class UserAddressController {
                 res.status(404).json({ errors: ['Endereço não encontrado.']});
             }
             if(!address.userId.equals(user._id)) {
-                res.status(422).json({ errors: ['Você não possui permissão para executar essa ação.']});
+                res.status(401).json({ errors: ['Você não possui permissão para executar essa ação.']});
             }
             
             await UserAddressModel.deleteOne({ _id: id });
