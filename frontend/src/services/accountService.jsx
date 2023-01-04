@@ -1,4 +1,9 @@
-import { api, setTokenHeaders } from '@src/utils/config';
+import { api, bank, setTokenHeaders } from '@src/utils/config';
+
+const getBankList = async () => {
+  const data = await bank.get();
+  return data;
+}
 
 const getAccountsByUser = async (token) => {
   setTokenHeaders(token);
@@ -6,8 +11,23 @@ const getAccountsByUser = async (token) => {
   return data;
 }
 
+const deleteAnAccount = async (token, id) => {
+  setTokenHeaders(token);
+  const data = await api.delete(`/bank/delete/${id}`);
+  return data;
+}
+
+const postNewAccount = async (token, accountData) => {
+  setTokenHeaders(token);
+  const data = await api.post('/bank/newaccount', accountData);
+  return data;
+}
+
 const accountService = {
-  getAccountsByUser
+  getBankList,
+  getAccountsByUser,
+  deleteAnAccount,
+  postNewAccount
 };
 
 export default accountService;

@@ -60,12 +60,12 @@ const NewAddressItem = ({ show, setShow, handleSubmit }) => {
       </Modal.Header>
       <Form onSubmit={handleForm}>
         <Modal.Body>
-          <Row className='mb-3'>
-            <Form.Group as={Col} md="6">
+          <Row>
+            <Form.Group as={Col} md="6" className='mb-3'>
               <Form.Label>Digite seu CEP</Form.Label>
               <Form.Control required type="text" placeholder="Apenas números..." onBlur={(e) => handleBlur(e.target.value)} onChange={(e) => setZipcode(e.target.value)} value={zipcode || ''} />
             </Form.Group>
-            <Form.Group as={Col} md="6">
+            <Form.Group as={Col} md="6" className='mb-3'>
               <Form.Label>Tipo do Endereço</Form.Label>
               <Form.Select aria-label="Default select example" onChange={(e) => setType(e.target.value)}>
                 <option>Selecione aqui</option>
@@ -74,32 +74,32 @@ const NewAddressItem = ({ show, setShow, handleSubmit }) => {
               </Form.Select>
             </Form.Group>
           </Row>
-          <Row className='mb-3'>
-            <Form.Group as={Col} md="9">
+          <Row>
+            <Form.Group as={Col} md="9" className='mb-3'>
               <Form.Label>Rua</Form.Label>
               <Form.Control required type="text" value={street || ''} readOnly />
             </Form.Group>
-            <Form.Group as={Col} md="3">
+            <Form.Group as={Col} md="3" className='mb-3'>
               <Form.Label>Nº</Form.Label>
               <Form.Control type="text" onChange={(e) => setStNumber(e.target.value)} value={stNumber || ''} />
             </Form.Group>
           </Row>
-          <Row className='mb-3'>
-            <Form.Group as={Col} md="6">
+          <Row>
+            <Form.Group as={Col} md="6" className='mb-3'>
               <Form.Label>Complemento</Form.Label>
               <Form.Control type="text" onChange={(e) => setComplement(e.target.value)} value={complement || ''} />
             </Form.Group>
-            <Form.Group as={Col} md="6">
+            <Form.Group as={Col} md="6" className='mb-3'>
               <Form.Label>Bairro</Form.Label>
               <Form.Control required type="text" value={district || ''} readOnly />
             </Form.Group>
           </Row>
-          <Row className='mb-3'>
-            <Form.Group as={Col} md="8">
+          <Row>
+            <Form.Group as={Col} md="8" className='mb-3'>
               <Form.Label>Cidade</Form.Label>
               <Form.Control required type="text" value={city || ''} readOnly />
             </Form.Group>
-            <Form.Group as={Col} md="4">
+            <Form.Group as={Col} md="4" className='mb-3'>
               <Form.Label>Estado</Form.Label>
               <Form.Control required type="text" value={uf || ''} readOnly />
             </Form.Group>

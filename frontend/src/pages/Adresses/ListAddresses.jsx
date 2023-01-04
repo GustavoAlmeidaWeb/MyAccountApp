@@ -18,6 +18,7 @@ const ListAddresses = () => {
   // State to open Add new Address Modal
   const [show, setShow] = useState(false);
 
+  // Get addresses on load page
   useEffect(() => {
     dispatch(getAddressesByUser());
   }, [dispatch])
