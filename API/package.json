@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build":"sucrase ./src -d ./dist --transforms imports",
-    "api": "nodemon src/app.js localhost 5000"
+    "dist":"node --watch dist/app.js",
+    "api": "node --watch src/app.js"
   },
   "keywords": [],
   "author": "",

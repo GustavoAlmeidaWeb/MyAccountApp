@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: `${__dirname}/../.env` });
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -16,6 +16,6 @@ app.use(helmet());
 
 conn().then(() => {
     app.listen(process.env.API_PORT, () => {
-        console.log("API Online!");
+        console.log("API Online! - Porta: "+ process.env.API_PORT);
     });
 });

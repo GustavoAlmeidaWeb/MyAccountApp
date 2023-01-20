@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const { BankAccount: BankAccountModel } = require('../models/BankAccount');
 
 module.exports = class BankAccountController {

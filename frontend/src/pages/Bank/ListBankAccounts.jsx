@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useResetAccountMessage } from '@src/hooks/useResetMessage';
 import { getAccountsByUser, deleteAnAccount, postNewAccount, getBankList } from '@src/slices/accountSlice';
 import { Row, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useResetAccountMessage } from '@src/hooks/useResetMessage';
-import ListBankItem from './ListBankItem';
 import AddNewBankAccount from './AddNewBankAccount';
+import ListBankItem from './ListBankItem';
 import Loading from '@src/components/Loading';
 import Message from '@src/components/Message';
 
